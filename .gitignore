@@ -1,0 +1,5 @@
+/.vscode
+.env
+mysql.test.ts
+test.ts
+

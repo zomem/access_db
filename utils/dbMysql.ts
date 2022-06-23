@@ -1,0 +1,71 @@
+/*
+ * @Author: zomem 770552117@qq.com
+ * @Date: 2022-06-16 15:49:53
+ * @LastEditors: zomem 770552117@qq.com
+ * @LastEditTime: 2022-06-16 17:56:57
+ * @FilePath: /access_db/lib/utils/dbMysql.ts
+ * @Description: 
+ */
+import {MysqlClient} from '../deps.ts'
+
+/**
+ * 
+ *  MYSQL_HOST=
+ *  MYSQL_USER=
+ *  MYSQL_PASSWORD=
+ *  MYSQL_DATABASE=
+ *  MYSQL_PORT=
+ *  MYSQL_CONNECTION_LIMIT=
+ *  MYSQL_CHARSET= UTF8
+ */
+//mysql 链接池
+export const client = Deno.env.get('MYSQL_HOST') ? await new MysqlClient().connect({
+  hostname: Deno.env.get('MYSQL_HOST'),
+  username: Deno.env.get('MYSQL_USER') || 'root',
+  password: Deno.env.get('MYSQL_PASSWORD') || '123456',
+  db: Deno.env.get('MYSQL_DATABASE'),
+  port: parseInt(Deno.env.get('MYSQL_PORT') || '3306'),
+  poolSize: parseInt(Deno.env.get('MYSQL_CONNECTION_LIMIT') || '10'),
+  charset: Deno.env.get('MYSQL_CHARSET') || 'UTF8'
+}) : null
+
+
+// ARMSCII8 = ARMSCII8_GENERAL_CI,
+// ASCII = ASCII_GENERAL_CI,
+// BIG5 = BIG5_CHINESE_CI,
+// CP1250 = CP1250_GENERAL_CI,
+// CP1251 = CP1251_GENERAL_CI,
+// CP1256 = CP1256_GENERAL_CI,
+// CP1257 = CP1257_GENERAL_CI,
+// CP866 = CP866_GENERAL_CI,
+// CP850 = CP850_GENERAL_CI,
+// CP852 = CP852_GENERAL_CI,
+// CP932 = CP932_JAPANESE_CI,
+// DEC8 = DEC8_SWEDISH_CI,
+// EUCJPMS = EUCJPMS_JAPANESE_CI,
+// EUCKR = EUCKR_KOREAN_CI,
+// GB2312 = GB2312_CHINESE_CI,
+// GBK = GBK_CHINESE_CI,
+// GEOSTD8 = GEOSTD8_GENERAL_CI,
+// GREEK = GREEK_GENERAL_CI,
+// HEBREW = HEBREW_GENERAL_CI,
+// HP8 = HP8_ENGLISH_CI,
+// KEYBCS2 = KEYBCS2_GENERAL_CI,
+// KOI8R = KOI8R_GENERAL_CI,
+// KOI8U = KOI8U_GENERAL_CI,
+// LATIN1 = LATIN1_SWEDISH_CI,
+// LATIN2 = LATIN2_GENERAL_CI,
+// LATIN5 = LATIN5_TURKISH_CI,
+// LATIN7 = LATIN7_GENERAL_CI,
+// MACCE = MACCE_GENERAL_CI,
+// MACROMAN = MACROMAN_GENERAL_CI,
+// SJIS = SJIS_JAPANESE_CI,
+// SWE7 = SWE7_SWEDISH_CI,
+// TIS620 = TIS620_THAI_CI,
+// UCS2 = UCS2_GENERAL_CI,
+// UJIS = UJIS_JAPANESE_CI,
+// UTF16 = UTF16_GENERAL_CI,
+// UTF16LE = UTF16LE_GENERAL_CI,
+// UTF8 = UTF8_GENERAL_CI,
+// UTF8MB4 = UTF8MB4_GENERAL_CI,
+// UTF32 = UTF32_GENERAL_CI,
